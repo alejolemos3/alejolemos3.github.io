@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mokepon</title>
+    <link rel="stylesheet" href="./style/style.css">
+</head>
+    <body>    
+        <section id="mascot-select">
+            <h1 class="title">Mokepon</h1>
+
+            <h2 class="subtitle">Choose your mascot</h2>
+
+            <div class="cards">
+                    <input type="radio" name="mascot-radio" id="hipodoge">
+                    <label class="mascot-card" for="hipodoge">
+                        <p>Hipodoge</p>
+                        <img src="./assets/mokepons_mokepon_hipodoge_attack.png" alt="Hipodoge">
+                    </label>
+
+                    <input type="radio" name="mascot-radio" id="capipepo">
+                    <label class="mascot-card" for="capipepo">
+                        <p>Capipepo</p>
+                        <img src="./assets/mokepons_mokepon_capipepo_attack.png" alt="Capipepo">
+                    </label>
+
+                    <input type="radio" name="mascot-radio" id="ratigueya">
+                    <label class="mascot-card" for="ratigueya">
+                        <p>Ratigueya</p>
+                        <img src="./assets/mokepons_mokepon_ratigueya_attack.png" alt="Ratigueya">
+                    </label>
+            </div>
+                <button id="select-mascot-button">Select</button>
+        </section>
+
+        <section id="attack-select">
+            <h1 class="title">Mokepon</h1>
+
+            <h2 class="subtitle">Choose your attack</h2>
+
+            <div id="attack-buttons">
+                <button id="fire-button" class="attack-button">Fire 🔥</button>
+                <button id="water-button" class="attack-button">Water 💧</button>
+                <button id="earth-button" class="attack-button">Earth 🌱</button>
+            </div>
+
+                <div id="messages">
+                    <p id="result">Good Luck!</p>
+                    <p id="restart">
+                        <button id="restart-button">Restart</button>
+                    </p>
+                </div>
+
+            <div id="attack-messages">
+                <div class="health">
+                    <p id="player-health">3</p>
+                    <p id="player-mascot"></p>
+                    <div id="player-attacks"></div>
+                </div>
+
+                <div class="health">
+                    <p id="enemy-health">3</p>
+                    <p id="enemy-mascot"></p>
+                    <div id="enemy-attacks"></div>
+                </div>
+            </div>
+        </section>
+        <script src="./js/script.js"></script>
+    </body>
+</html>
