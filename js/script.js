@@ -104,8 +104,7 @@ const gameInit = () => {
 };
 
 const enemyMascotSelect = () => {
-    let mascots = ['Hipodoge', 'Capipepo', 'Ratigueya'];
-    enemyMascotSpan.innerHTML = mascots[(random(0,2))];
+    enemyMascotSpan.innerHTML = mascots[random(0,mascots.length -1)].name;
 };
 
 const playerMascotSelect = () => {
