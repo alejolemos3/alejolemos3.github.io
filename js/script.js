@@ -1,57 +1,128 @@
+const mascotSelectSection = document.getElementById('mascot-select');
+const cardsContainer = document.getElementById('cards-container');
+const selectMascotButton = document.getElementById('select-mascot-button');
+
+const attackSelectSection = document.getElementById('attack-select');
+const fireButton = document.getElementById('fire-button');
+const waterButton = document.getElementById('water-button');
+const earthButton = document.getElementById('earth-button');
+const playerAttacks = document.getElementById('player-attacks');
+const enemyAttacks = document.getElementById('enemy-attacks');
+
+const playerMascotSpan = document.getElementById('player-mascot');
+const playerHealthSpan = document.getElementById('player-health');
+
+const enemyMascotSpan = document.getElementById('enemy-mascot');
+const enemyHealthSpan = document.getElementById('enemy-health');
+
+const resultMessage = document.getElementById('result');
+const restartButton = document.getElementById('restart-button');
+
+let hipodogeInput;
+let capipepoInput;
+let ratigueyaInput;
+
 let playerAttack;
 let enemyAttack;
 
 let playerHealth = 3;
 let enemyHealth = 3;
 
-const gameInit = () => {
+let mascotsOption;
 
-    let attackSelectSection = document.getElementById('attack-select');
+let mascots = [];
+
+class Mascot {
+    constructor(name, image, lives) {
+        this.name = name;
+        this.image = image;
+        this.live = lives
+        this.attacks = [];
+    }
+}
+
+let hipodoge = new Mascot('Hipodoge', '../assets/mokepons_mokepon_hipodoge_attack.png', 3);
+
+let capipepo = new Mascot('Capipepo', '../assets/mokepons_mokepon_capipepo_attack.png', 3);
+
+let ratigueya = new Mascot('Ratigueya', '../assets/mokepons_mokepon_ratigueya_attack.png', 3);
+
+hipodoge.attacks.push(
+    { attack: '💧', id: 'water-button' },
+    { attack: '💧', id: 'water-button' },
+    { attack: '💧', id: 'water-button' },
+    { attack: '🔥', id: 'fire-button' },
+    { attack: '🌱', id: 'earth-button' }
+);
+
+capipepo.attacks.push(
+    { attack: '🌱', id: 'earth-button' },
+    { attack: '🌱', id: 'earth-button' },
+    { attack: '🌱', id: 'earth-button' },
+    { attack: '💧', id: 'water-button' },
+    { attack: '🔥', id: 'fire-button' }
+);
+
+ratigueya.attacks.push(
+    { attack: '🔥', id: 'fire-button' },
+    { attack: '🔥', id: 'fire-button' },
+    { attack: '🔥', id: 'fire-button' },
+    { attack: '💧', id: 'water-button' },
+    { attack: '🌱', id: 'earth-button' }
+);
+
+mascots.push(hipodoge, capipepo, ratigueya);
+
+const gameInit = () => {
     attackSelectSection.style.display = 'none';
 
-    let selectMascotButton = document.getElementById('select-mascot-button');
+    mascots.forEach((mascot) => {
+        mascotsOption = `
+            <input type="radio" name="mascot-radio" id=${mascot.name} class="mascot-input">
+            <label class="mascot-card" for=${mascot.name}>
+                <p>${mascot.name}</p>
+                <img src=${mascot.image} alt=${mascot.name} >
+            </label>
+    
+        `;
+        cardsContainer.innerHTML += mascotsOption;
+
+        hipodogeInput = document.getElementById('Hipodoge');
+        capipepoInput = document.getElementById('Capipepo');
+        ratigueyaInput = document.getElementById('Ratigueya');
+    });
+
     selectMascotButton.addEventListener('click', playerMascotSelect);
     // selectMascotButton.disabled = true;
 
-    let fireButton = document.getElementById('fire-button');
     fireButton.addEventListener('click', fireAttack);
-    let waterButton = document.getElementById('water-button');
     waterButton.addEventListener('click', waterAttack);
-    let earthButton = document.getElementById('earth-button');
     earthButton.addEventListener('click', earthAttack);
 
-    let restartButton = document.getElementById('restart-button');
     restartButton.addEventListener('click', restartGame);
     restartButton.style.display = 'none';
 };
 
 const enemyMascotSelect = () => {
     let mascots = ['Hipodoge', 'Capipepo', 'Ratigueya'];
-    let enemyMascotSpan = document.getElementById('enemy-mascot');
     enemyMascotSpan.innerHTML = mascots[(random(0,2))];
 };
 
 const playerMascotSelect = () => {
 
-    let hipodogeInput = document.getElementById('hipodoge');
-    let capipepoInput = document.getElementById('capipepo');
-    let ratigueyaInput = document.getElementById('ratigueya');
         
-    let playerMascotSpan = document.getElementById('player-mascot');
 
-    let attackSelectSection = document.getElementById('attack-select');
-    let mascotSelectSection = document.getElementById('mascot-select');
 
     if (hipodogeInput.checked) {
-        playerMascotSpan.innerHTML = 'Hipodoge';
+        playerMascotSpan.innerHTML = hipodogeInput.id;
         attackSelectSection.style.display = 'flex';
         mascotSelectSection.style.display = 'none';
     } else if (capipepoInput.checked) {
-        playerMascotSpan.innerHTML = 'Capipepo';
+        playerMascotSpan.innerHTML = capipepoInput.id;
         attackSelectSection.style.display = 'flex';
         mascotSelectSection.style.display = 'none';
     } else if (ratigueyaInput.checked) {
-        playerMascotSpan.innerHTML = 'Ratigueya';
+        playerMascotSpan.innerHTML = ratigueyaInput.id;
         attackSelectSection.style.display = 'flex';
         mascotSelectSection.style.display = 'none';
     } else {
@@ -84,9 +155,6 @@ const enemyRandomAttack = () => {
 };
 
 const battle = () => {
-    let playerHealthSpan = document.getElementById('player-health');
-    let enemyHealthSpan = document.getElementById('enemy-health');
-
     if(enemyAttack == playerAttack) battleMessage('Tie');
 
     else if (
@@ -113,9 +181,6 @@ const checkHealth = () => {
 };
 
 const battleMessage = result => {
-    let resultMessage = document.getElementById('result');
-    let playerAttacks = document.getElementById('player-attacks');
-    let enemyAttacks = document.getElementById('enemy-attacks');
 
     let newPlayerAttack = document.createElement('p');
     let newEnemyAttack = document.createElement('p');
@@ -129,15 +194,12 @@ const battleMessage = result => {
 };
 
 const finalMessage = winnerMessage => {
-    let resultMessage = document.getElementById('result');
-
     resultMessage.innerHTML = winnerMessage;
 
     document.getElementById('fire-button').disabled = true;
     document.getElementById('water-button').disabled = true;
     document.getElementById('earth-button').disabled = true;
 
-    let restartButton = document.getElementById('restart-button');
     restartButton.style.display = 'block';
 };
 

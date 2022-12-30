@@ -24,13 +24,13 @@ body {
 .title {
     font-size: 40px;
     color: #FCD900;
-    text-shadow: rgb(34, 34, 34) 3px 0px 0px, rgb(34, 34, 34) 2.83487px 0.981584px 0px, rgb(34, 34, 34) 2.35766px 1.85511px 0px, rgb(34, 34, 34) 1.62091px 2.52441px 0px, rgb(34, 34, 34) 0.705713px 2.91581px 0px, rgb(34, 34, 34) -0.287171px 2.98622px 0px, rgb(34, 34, 34) -1.24844px 2.72789px 0px, rgb(34, 34, 34) -2.07227px 2.16926px 0px, rgb(34, 34, 34) -2.66798px 1.37182px 0px, rgb(34, 34, 34) -2.96998px 0.42336px 0px, rgb(34, 34, 34) -2.94502px -0.571704px 0px, rgb(34, 34, 34) -2.59586px -1.50383px 0px, rgb(34, 34, 34) -1.96093px -2.27041px 0px, rgb(34, 34, 34) -1.11013px -2.78704px 0px, rgb(34, 34, 34) -0.137119px -2.99686px 0px, rgb(34, 34, 34) 0.850987px -2.87677px 0px, rgb(34, 34, 34) 1.74541px -2.43999px 0px, rgb(34, 34, 34) 2.44769px -1.73459px 0px, rgb(34, 34, 34) 2.88051px -0.838247px 0px, 4px 4px 8px #212121;
+    text-shadow: rgb(34, 34, 34) 3px 0px 0px, rgb(34, 34, 34) 2.83487px 0.981584px 0px, rgb(34, 34, 34) 2.35766px 1.85511px 0px, rgb(34, 34, 34) 1.62091px 2.52441px 0px, rgb(34, 34, 34) 0.705713px 2.91581px 0px, rgb(34, 34, 34) -0.287171px 2.98622px 0px, rgb(34, 34, 34) -1.24844px 2.72789px 0px, rgb(34, 34, 34) -2.07227px 2.16926px 0px, rgb(34, 34, 34) -2.66798px 1.37182px 0px, rgb(34, 34, 34) -2.96998px 0.42336px 0px, rgb(34, 34, 34) -2.94502px -0.571704px 0px, rgb(34, 34, 34) -2.59586px -1.50383px 0px, rgb(34, 34, 34) -1.96093px -2.27041px 0px, rgb(34, 34, 34) -1.11013px -2.78704px 0px, rgb(34, 34, 34) -0.137119px -2.99686px 0px, rgb(34, 34, 34) 0.850987px -2.87677px 0px, rgb(34, 34, 34) 1.74541px -2.43999px 0px, rgb(34, 34, 34) 2.44769px -1.73459px 0px, rgb(34, 34, 34) 2.88051px -0.838247px 0px, 4px 4px 8px #21212199;
 }
 
 .subtitle {
     font-size: 20px;
     font-family: 'Press Start 2P', 'cursive';
-    text-shadow: rgb(34, 34, 34) 2px 0px 0px, rgb(34, 34, 34) 1.75517px 0.958851px 0px, rgb(34, 34, 34) 1.0806px 1.68294px 0px, rgb(34, 34, 34) 0.141474px 1.99499px 0px, rgb(34, 34, 34) -0.832294px 1.81859px 0px, rgb(34, 34, 34) -1.60229px 1.19694px 0px, rgb(34, 34, 34) -1.97998px 0.28224px 0px, rgb(34, 34, 34) -1.87291px -0.701566px 0px, rgb(34, 34, 34) -1.30729px -1.5136px 0px, rgb(34, 34, 34) -0.421592px -1.95506px 0px, rgb(34, 34, 34) 0.567324px -1.91785px 0px, rgb(34, 34, 34) 1.41734px -1.41108px 0px, rgb(34, 34, 34) 1.92034px -0.558831px 0px, 4px 4px 8px #212121;
+    text-shadow: rgb(34, 34, 34) 2px 0px 0px, rgb(34, 34, 34) 1.75517px 0.958851px 0px, rgb(34, 34, 34) 1.0806px 1.68294px 0px, rgb(34, 34, 34) 0.141474px 1.99499px 0px, rgb(34, 34, 34) -0.832294px 1.81859px 0px, rgb(34, 34, 34) -1.60229px 1.19694px 0px, rgb(34, 34, 34) -1.97998px 0.28224px 0px, rgb(34, 34, 34) -1.87291px -0.701566px 0px, rgb(34, 34, 34) -1.30729px -1.5136px 0px, rgb(34, 34, 34) -0.421592px -1.95506px 0px, rgb(34, 34, 34) 0.567324px -1.91785px 0px, rgb(34, 34, 34) 1.41734px -1.41108px 0px, rgb(34, 34, 34) 1.92034px -0.558831px 0px, 4px 4px 8px #21212199;
 }
 
 .cards, #attack-buttons {
@@ -62,11 +62,23 @@ body {
 
 .mascot-card p {
     font-size: 14px;
-    text-shadow: rgb(33, 33, 33) 1px 0px 0px, rgb(33, 33, 33) 0.540302px 0.841471px 0px, rgb(33, 33, 33) -0.416147px 0.909297px 0px, rgb(33, 33, 33) -0.989992px 0.14112px 0px, rgb(33, 33, 33) -0.653644px -0.756802px 0px, rgb(33, 33, 33) 0.283662px -0.958924px 0px, rgb(33, 33, 33) 0.96017px -0.279415px 0px, 0px 0px 8px #212121ff; 
+    text-shadow: rgb(33, 33, 33) 1px 0px 0px, rgb(33, 33, 33) 0.540302px 0.841471px 0px, rgb(33, 33, 33) -0.416147px 0.909297px 0px, rgb(33, 33, 33) -0.989992px 0.14112px 0px, rgb(33, 33, 33) -0.653644px -0.756802px 0px, rgb(33, 33, 33) 0.283662px -0.958924px 0px, rgb(33, 33, 33) 0.96017px -0.279415px 0px, 0px 0px 8px #21212199; 
 }
 
 .mascot-card img {
     width: 80px;
+}
+
+.mascot-input {
+    display: none;
+}
+
+.mascot-input:checked + label {
+    background: #0353974a;
+}
+
+.mascot-input:hover + label {
+    background: #0353974a;
 }
 
 #select-mascot-button {
@@ -79,25 +91,17 @@ body {
     font-family: 'Press Start 2P', 'cursive';
     margin-top: 20px;
     box-shadow: 2px 2px 10px #21212155;
-    text-shadow: rgb(33, 33, 33) 1px 0px 0px, rgb(33, 33, 33) 0.540302px 0.841471px 0px, rgb(33, 33, 33) -0.416147px 0.909297px 0px, rgb(33, 33, 33) -0.989992px 0.14112px 0px, rgb(33, 33, 33) -0.653644px -0.756802px 0px, rgb(33, 33, 33) 0.283662px -0.958924px 0px, rgb(33, 33, 33) 0.96017px -0.279415px 0px, 0px 0px 8px #212121ff;    
+    text-shadow: rgb(33, 33, 33) 1px 0px 0px, rgb(33, 33, 33) 0.540302px 0.841471px 0px, rgb(33, 33, 33) -0.416147px 0.909297px 0px, rgb(33, 33, 33) -0.989992px 0.14112px 0px, rgb(33, 33, 33) -0.653644px -0.756802px 0px, rgb(33, 33, 33) 0.283662px -0.958924px 0px, rgb(33, 33, 33) 0.96017px -0.279415px 0px, 0px 0px 8px #21212199;    
 }
 
-#restart-button {
-    background: #03539770;
-    padding: 10px;
-    box-sizing: border-box;
-    border-radius: 20px;
-    border: 3px solid #ededed;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0px 0px 10px 2px #21212155;
-    color: #ededed;
-    text-shadow: rgb(33, 33, 33) 1px 0px 0px, rgb(33, 33, 33) 0.540302px 0.841471px 0px, rgb(33, 33, 33) -0.416147px 0.909297px 0px, rgb(33, 33, 33) -0.989992px 0.14112px 0px, rgb(33, 33, 33) -0.653644px -0.756802px 0px, rgb(33, 33, 33) 0.283662px -0.958924px 0px, rgb(33, 33, 33) 0.96017px -0.279415px 0px, 0px 0px 8px #212121ff; 
-    font-family: 'Press Start 2P', 'cursive';
+#select-mascot-button:hover {
+    background: #0353974a;
 }
 
-#hipodoge, #capipepo, #ratigueya {
-    display: none;
+#select-mascot-button:active {
+    background: #0353974a;
+    width: 160px;
+    height: 34px;
 }
 
 .attack-button {
@@ -110,7 +114,7 @@ body {
     align-items: center;
     box-shadow: 0px 0px 10px 2px #21212155;
     color: #ededed;
-    text-shadow: rgb(33, 33, 33) 1px 0px 0px, rgb(33, 33, 33) 0.540302px 0.841471px 0px, rgb(33, 33, 33) -0.416147px 0.909297px 0px, rgb(33, 33, 33) -0.989992px 0.14112px 0px, rgb(33, 33, 33) -0.653644px -0.756802px 0px, rgb(33, 33, 33) 0.283662px -0.958924px 0px, rgb(33, 33, 33) 0.96017px -0.279415px 0px, 0px 0px 8px #212121ff; 
+    text-shadow: rgb(33, 33, 33) 1px 0px 0px, rgb(33, 33, 33) 0.540302px 0.841471px 0px, rgb(33, 33, 33) -0.416147px 0.909297px 0px, rgb(33, 33, 33) -0.989992px 0.14112px 0px, rgb(33, 33, 33) -0.653644px -0.756802px 0px, rgb(33, 33, 33) 0.283662px -0.958924px 0px, rgb(33, 33, 33) 0.96017px -0.279415px 0px, 0px 0px 8px #21212199; 
     font-family: 'Press Start 2P', 'cursive';
 }
 
@@ -133,11 +137,14 @@ body {
 #restart-button {
     background: #03539770;
     padding: 10px;
+    box-sizing: border-box;
     border-radius: 20px;
     border: 3px solid #ededed;
+    justify-content: center;
+    align-items: center;
     box-shadow: 0px 0px 10px 2px #21212155;
     color: #ededed;
-    text-shadow: 1px 1px 5px #21212155;
+    text-shadow: rgb(33, 33, 33) 1px 0px 0px, rgb(33, 33, 33) 0.540302px 0.841471px 0px, rgb(33, 33, 33) -0.416147px 0.909297px 0px, rgb(33, 33, 33) -0.989992px 0.14112px 0px, rgb(33, 33, 33) -0.653644px -0.756802px 0px, rgb(33, 33, 33) 0.283662px -0.958924px 0px, rgb(33, 33, 33) 0.96017px -0.279415px 0px, 0px 0px 8px #21212199;
     font-family: 'Press Start 2P', 'cursive';
 }
 
@@ -176,5 +183,15 @@ body {
 
     .subtitle {
         font-size: 14px;
+    }
+}
+
+@media (max-width: 267px) {
+    .title {
+        font-size: 26px;
+    }
+
+    .subtitle {
+        font-size: 11px;
     }
 }
