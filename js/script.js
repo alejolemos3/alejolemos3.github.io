@@ -3,34 +3,45 @@ const cardsContainer = document.getElementById('cards-container');
 const selectMascotButton = document.getElementById('select-mascot-button');
 
 const attackSelectSection = document.getElementById('attack-select');
-const fireButton = document.getElementById('fire-button');
-const waterButton = document.getElementById('water-button');
-const earthButton = document.getElementById('earth-button');
 const playerAttacks = document.getElementById('player-attacks');
 const enemyAttacks = document.getElementById('enemy-attacks');
 
 const playerMascotSpan = document.getElementById('player-mascot');
-const playerHealthSpan = document.getElementById('player-health');
+const playerVictoriesSpan = document.getElementById('player-victories');
 
 const enemyMascotSpan = document.getElementById('enemy-mascot');
-const enemyHealthSpan = document.getElementById('enemy-health');
+const enemyVictoriesSpan = document.getElementById('enemy-victories');
 
 const resultMessage = document.getElementById('result');
 const restartButton = document.getElementById('restart-button');
+const attackContainer = document.getElementById('attack-container');
 
 let hipodogeInput;
 let capipepoInput;
 let ratigueyaInput;
 
-let playerAttack;
-let enemyAttack;
+let playerAttack = [];
+let enemyAttack = [];
 
-let playerHealth = 3;
-let enemyHealth = 3;
+let enemyMascotAttacks;
+
+let playerMascot;
+let mascotAttacks;
+
+let fireButton;
+let waterButton;
+let earthButton;
+
+let buttons = [];
+let playerAttackIndex;
+let enemyAttackIndex;
+let playerVictories = 0;
+let enemyVictories = 0;
 
 let mascotsOption;
 
 let mascots = [];
+
 
 class Mascot {
     constructor(name, image, lives) {
@@ -48,27 +59,27 @@ let capipepo = new Mascot('Capipepo', '../assets/mokepons_mokepon_capipepo_attac
 let ratigueya = new Mascot('Ratigueya', '../assets/mokepons_mokepon_ratigueya_attack.png', 3);
 
 hipodoge.attacks.push(
-    { attack: '💧', id: 'water-button' },
-    { attack: '💧', id: 'water-button' },
-    { attack: '💧', id: 'water-button' },
-    { attack: '🔥', id: 'fire-button' },
-    { attack: '🌱', id: 'earth-button' }
+    { name: '💧', id: 'water-button' },
+    { name: '💧', id: 'water-button' },
+    { name: '💧', id: 'water-button' },
+    { name: '🔥', id: 'fire-button' },
+    { name: '🌱', id: 'earth-button' }
 );
 
 capipepo.attacks.push(
-    { attack: '🌱', id: 'earth-button' },
-    { attack: '🌱', id: 'earth-button' },
-    { attack: '🌱', id: 'earth-button' },
-    { attack: '💧', id: 'water-button' },
-    { attack: '🔥', id: 'fire-button' }
+    { name: '🌱', id: 'earth-button' },
+    { name: '🌱', id: 'earth-button' },
+    { name: '🌱', id: 'earth-button' },
+    { name: '💧', id: 'water-button' },
+    { name: '🔥', id: 'fire-button' }
 );
 
 ratigueya.attacks.push(
-    { attack: '🔥', id: 'fire-button' },
-    { attack: '🔥', id: 'fire-button' },
-    { attack: '🔥', id: 'fire-button' },
-    { attack: '💧', id: 'water-button' },
-    { attack: '🌱', id: 'earth-button' }
+    { name: '🔥', id: 'fire-button' },
+    { name: '🔥', id: 'fire-button' },
+    { name: '🔥', id: 'fire-button' },
+    { name: '💧', id: 'water-button' },
+    { name: '🌱', id: 'earth-button' }
 );
 
 mascots.push(hipodoge, capipepo, ratigueya);
@@ -95,88 +106,135 @@ const gameInit = () => {
     selectMascotButton.addEventListener('click', playerMascotSelect);
     // selectMascotButton.disabled = true;
 
-    fireButton.addEventListener('click', fireAttack);
-    waterButton.addEventListener('click', waterAttack);
-    earthButton.addEventListener('click', earthAttack);
-
     restartButton.addEventListener('click', restartGame);
     restartButton.style.display = 'none';
 };
 
-const enemyMascotSelect = () => {
-    enemyMascotSpan.innerHTML = mascots[random(0,mascots.length -1)].name;
-};
-
 const playerMascotSelect = () => {
 
-        
-
+    attackSelectSection.style.display = 'flex';
+    mascotSelectSection.style.display = 'none';
 
     if (hipodogeInput.checked) {
         playerMascotSpan.innerHTML = hipodogeInput.id;
-        attackSelectSection.style.display = 'flex';
-        mascotSelectSection.style.display = 'none';
+        playerMascot = hipodogeInput.id;
     } else if (capipepoInput.checked) {
         playerMascotSpan.innerHTML = capipepoInput.id;
-        attackSelectSection.style.display = 'flex';
-        mascotSelectSection.style.display = 'none';
+        playerMascot = capipepoInput.id;
     } else if (ratigueyaInput.checked) {
         playerMascotSpan.innerHTML = ratigueyaInput.id;
-        attackSelectSection.style.display = 'flex';
-        mascotSelectSection.style.display = 'none';
+        playerMascot = ratigueyaInput.id;
     } else {
         alert('select a mascot')
     }
+
+    extracktAttacks(playerMascot);
 
     enemyMascotSelect();
 
 };
 
-const fireAttack = () => {
-    playerAttack = 'FIRE';
-    enemyRandomAttack();
+const enemyMascotSelect = () => {
+    enemyMascotSpan.innerHTML = mascots[random(0,mascots.length -1)].name;
+    enemyMascotAttacks = mascots[random(0,mascots.length -1)].attacks;
+    attackSecuence();
 };
 
-const waterAttack = () => {
-    playerAttack = 'WATER';
-    enemyRandomAttack();
+const extracktAttacks = () => {
+    let attacks;
+    mascots.forEach((mascot) => {
+        if(mascot.name == playerMascot) {
+            attacks = mascot.attacks;
+        }
+    });
+    showAttacks(attacks);
+}
+
+const showAttacks = attacks => {
+    attacks.forEach((attack) => {
+        mascotAttacks = `
+        <button id=${attack.id} class="attack-button ab">${attack.name}</button>
+        `;
+        attackContainer.innerHTML += mascotAttacks;
+    });
+
+    fireButton = document.getElementById('fire-button');
+    waterButton = document.getElementById('water-button');
+    earthButton = document.getElementById('earth-button');
+    buttons = document.querySelectorAll('.ab');
 };
 
-const earthAttack = () => {
-    playerAttack = 'EARTH';
-    enemyRandomAttack();
+const attackSecuence = () => {
+    buttons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            if(e.target.textContent === '🔥') {
+                playerAttack.push('FIRE');
+                console.log(playerAttack);
+                button.style.background = '#001E6C70';
+                button.disabled = true;
+            } else if(e.target.textContent === '💧') {
+                playerAttack.push('WATER');
+                console.log(playerAttack);
+                button.style.background = '#001E6C70';
+                button.disabled = true;
+            } else {
+                    playerAttack.push('EARTH');
+                    console.log(playerAttack);
+                    button.style.background = '#001E6C70';
+                    button.disabled = true;
+            }
+            enemyRandomAttack();
+        });
+    });
 };
 
 const enemyRandomAttack = () => {
-    let attacks = ['FIRE', 'WATER', 'EARTH'];
-    enemyAttack = attacks[random(0,2)];
-    battle();
+    let attacks = ['FIRE', 'FIRE', 'WATER', 'WATER', 'EARTH'];
+    enemyAttack.push(attacks[random(0,enemyMascotAttacks.length -1)]);
+    console.log(enemyAttack);
+    battleInit();
 };
+
+const battleInit = () => {
+    if(playerAttack.length === 5) {
+        battle();
+    }
+};
+
+const indexOfBothOponents = (player, enemy) => {
+    playerAttackIndex = playerAttack[player];
+    enemyAttackIndex = enemyAttack[enemy];
+}
 
 const battle = () => {
-    if(enemyAttack == playerAttack) battleMessage('Tie');
 
-    else if (
-        (enemyAttack == 'EARTH' && playerAttack == 'FIRE') ||
-        (enemyAttack == 'FIRE' && playerAttack == 'WATER') || 
-        (enemyAttack == 'WATER' && playerAttack == 'EARTH')
-    ) {
-        battleMessage('You Win this battle');
-        enemyHealth--;
-        enemyHealthSpan.innerHTML = enemyHealth;
-    } else {
-        battleMessage('You Loose this battle');
-        playerHealth--;
-        playerHealthSpan.innerHTML = playerHealth;
+    for (let attack in playerAttack) {
+        if(playerAttack[attack] === enemyAttack[attack]) {
+            indexOfBothOponents(attack, attack);
+            battleMessage('Tie');
+        } else if (
+            (enemyAttack[attack] == 'EARTH' && playerAttack[attack] == 'FIRE') ||
+            (enemyAttack[attack] == 'FIRE' && playerAttack[attack] == 'WATER') || 
+            (enemyAttack[attack] == 'WATER' && playerAttack[attack] == 'EARTH')
+        ) {
+            indexOfBothOponents(attack, attack);
+            battleMessage('You Win this battle');
+            playerVictories++;
+            playerVictoriesSpan.innerHTML = playerVictories;
+        } else {
+            indexOfBothOponents(attack, attack);
+            battleMessage('You Loose this battle');
+            enemyVictories++;
+            enemyVictoriesSpan.innerHTML = enemyVictories;
+        }
     }
-
-    checkHealth();
-
+    checkVictories();
 };
 
-const checkHealth = () => {
-    if(playerHealth == 0) finalMessage('You Loose! <br><br>Your mascot has no more lives');
-    else if(enemyHealth == 0) finalMessage("You Win! <br><br>The enemy's mascot has no more lives");
+const checkVictories = () => {
+    if(playerVictories === enemyVictories) finalMessage('This is a Tie!');
+    else if(playerVictories > enemyVictories) finalMessage('You Win!');
+    else finalMessage('You Loose!');
 };
 
 const battleMessage = result => {
@@ -185,8 +243,8 @@ const battleMessage = result => {
     let newEnemyAttack = document.createElement('p');
 
     resultMessage.innerHTML = result;
-    newPlayerAttack.innerHTML = playerAttack;
-    newEnemyAttack.innerHTML = enemyAttack;
+    newPlayerAttack.innerHTML = playerAttackIndex;
+    newEnemyAttack.innerHTML = enemyAttackIndex;
 
     playerAttacks.appendChild(newPlayerAttack);
     enemyAttacks.appendChild(newEnemyAttack);
