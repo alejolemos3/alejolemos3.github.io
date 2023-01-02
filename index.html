@@ -19,10 +19,21 @@
                 <button id="select-mascot-button">Select</button>
         </section>
 
+        <section id="see-map">
+            <h2 class="subtitle">Travel the map with your mascot</h2>
+            <canvas id="map"></canvas>
+            <button onmouseup="stopMotion()" onmousedown="moveRight()">Right</button>
+            <div>
+                <button onmouseup="stopMotion()" onmousedown="moveLeft()">Left</button>
+                <button onmouseup="stopMotion()" onmousedown="moveUp()">Up</button>
+                <button onmouseup="stopMotion()" onmousedown="moveDown()">Down</button>
+            </div>
+        </section>
+
         <section id="attack-select">
             <h1 class="title">Mokepon</h1>
 
-            <h2 class="subtitle">Choose your attack</h2>
+            <h2 class="subtitle">Choose your attack secuence</h2>
 
             <div id="attack-container" class="attack-buttons">
                 
@@ -49,6 +60,6 @@
                 </div>
             </div>
         </section>
-        <script src="/js/script.js"></script>
+        <script src="./js/script.js"></script>
     </body>
 </html>
